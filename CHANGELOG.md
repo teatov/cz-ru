@@ -2,7 +2,6 @@
 
 ### Fix
 
-- **setup.py**: в `long_description` добавлено содержимое `README.md`
 - **README.md**: в `long_description` добавлено содержимое `README.md`
 
 ## 0.1.1 (2024-11-01)

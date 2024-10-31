@@ -6,6 +6,11 @@
 которая более популярна, но требует наличие `package.json`. Подробнее о различиях
 [здесь](https://commitizen-tools.github.io/commitizen/faq/#is-this-project-affiliated-with-the-commitizen-js-project).
 
+Установить можно так:
+```bash
+pip install commitizen cz-ru
+```
+
 Структура идентична [конфигу cz_conventional_commits](https://github.com/commitizen-tools/commitizen/blob/master/commitizen/cz/conventional_commits/conventional_commits.py).
 Названия типов изменений вроде `fix` и `feat` решил оставить как есть.
 Это не так важно, плюс не ломает генерацию списков изменений.

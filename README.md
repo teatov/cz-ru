@@ -11,6 +11,9 @@
 pip install commitizen cz-ru
 ```
 
+О том как пользоваться можно почитать
+[здесь](https://commitizen-tools.github.io/commitizen/).
+
 Структура идентична [конфигу cz_conventional_commits](https://github.com/commitizen-tools/commitizen/blob/master/commitizen/cz/conventional_commits/conventional_commits.py).
 Названия типов изменений вроде `fix` и `feat` решил оставить как есть.
 Это не так важно, плюс не ломает генерацию списков изменений.

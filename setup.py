@@ -8,7 +8,7 @@ with open(filepath) as f:
 
 setup(
     name="cz_ru",
-    version="0.1.1",
+    version="0.1.2",
     py_modules=["cz_ru"],
     license="MIT",
     long_description=readme,

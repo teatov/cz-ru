@@ -25,14 +25,14 @@ def parse_subject(text):
     if isinstance(text, str):
         text = text.strip(".").strip()
 
-    return required_validator(text, msg="Subject is required.")
+    return required_validator(text, msg="Краткое описание обязательно.")
 
 
 class CzRu(BaseCommitizen):
     bump_pattern = defaults.bump_pattern
     bump_map = defaults.bump_map
     bump_map_major_version_zero = defaults.bump_map_major_version_zero
-    commit_parser = r"^((?P<change_type>feat|fix|refactor|perf|BREAKING CHANGE)(?:\((?P<scope>[^()\r\n]*)\)|\()?(?P<breaking>!)?|\w+!):\s(?P<message>.*)?"  # noqa
+    commit_parser = r"^((?P<change_type>feat|fix|refactor|perf|BREAKING CHANGE)(?:\((?P<scope>[^()\r\n]*)\)|\()?(?P<breaking>!)?|\w+!):\s(?P<message>.*)?"
     change_type_map = {
         "feat": "Feat",
         "fix": "Fix",
@@ -46,66 +46,51 @@ class CzRu(BaseCommitizen):
             {
                 "type": "list",
                 "name": "prefix",
-                "message": "Select the type of change you are committing",
+                "message": "Выберите тип изменений, которые вы вносите",
                 "choices": [
                     {
                         "value": "fix",
-                        "name": "fix: A bug fix. Correlates with PATCH in SemVer",
+                        "name": "fix: Исправление бага. Соответствует ПАТЧ-версии в SemVer",
                         "key": "x",
                     },
                     {
                         "value": "feat",
-                        "name": "feat: A new feature. Correlates with MINOR in SemVer",
+                        "name": "feat: Новый функционал. Соответствует МИНОРНОЙ версии в SemVer",
                         "key": "f",
                     },
                     {
                         "value": "docs",
-                        "name": "docs: Documentation only changes",
+                        "name": "docs: Изменения, касающиеся документации",
                         "key": "d",
                     },
                     {
                         "value": "style",
-                        "name": (
-                            "style: Changes that do not affect the "
-                            "meaning of the code (white-space, formatting,"
-                            " missing semi-colons, etc)"
-                        ),
+                        "name": "style: Изменения, не затрагивающие смысл кода (пробелы, форматирование, пропущенная пунктуация и т.д.)",
                         "key": "s",
                     },
                     {
                         "value": "refactor",
-                        "name": (
-                            "refactor: A code change that neither fixes "
-                            "a bug nor adds a feature"
-                        ),
+                        "name": "refactor: Изменение в коде, которое не исправляет баг и не добавляет новый функционал",
                         "key": "r",
                     },
                     {
                         "value": "perf",
-                        "name": "perf: A code change that improves performance",
+                        "name": "perf: Изменение в коде, улучшающее производительность",
                         "key": "p",
                     },
                     {
                         "value": "test",
-                        "name": (
-                            "test: Adding missing or correcting " "existing tests"
-                        ),
+                        "name": "test: Добавление недостающих или исправление существующих тестов",
                         "key": "t",
                     },
                     {
                         "value": "build",
-                        "name": (
-                            "build: Changes that affect the build system or "
-                            "external dependencies (example scopes: pip, docker, npm)"
-                        ),
+                        "name": "build: Изменения, затрагивающие систему сборки или внешние зависимости (примеры области: pip, docker, npm)",
                         "key": "b",
                     },
                     {
                         "value": "ci",
-                        "name": (
-                            "ci: Changes to CI configuration files and "
-                            "scripts (example scopes: GitLabCI)"
-                        ),
+                        "name": "ci: Изменения в конфигурации и скриптах CI (пример области: GitLabCI)",
                         "key": "c",
                     },
                 ],
@@ -113,40 +98,31 @@ class CzRu(BaseCommitizen):
             {
                 "type": "input",
                 "name": "scope",
-                "message": (
-                    "What is the scope of this change? (class or file name): (press [enter] to skip)\n"
-                ),
+                "message": "В какой области внесены изменения? (название класса или файла): (нажмите [enter], чтобы пропустить)\n",
                 "filter": parse_scope,
             },
             {
                 "type": "input",
                 "name": "subject",
                 "filter": parse_subject,
-                "message": (
-                    "Write a short and imperative summary of the code changes: (lower case and no period)\n"
-                ),
+                "message": "Напишите лаконичную сводку изменений, используя совершенные глаголы прошедшего времени: (в нижнем регистре, без точки)\n",
             },
             {
                 "type": "input",
                 "name": "body",
-                "message": (
-                    "Provide additional contextual information about the code changes: (press [enter] to skip)\n"
-                ),
+                "message": "Добавьте дополнительный контекст изменений: (нажмите [enter], чтобы пропустить)\n",
                 "filter": multiple_line_breaker,
             },
             {
                 "type": "confirm",
-                "message": "Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer",
+                "message": "Это изменение ОБРАТНО НЕСОВМЕСТИМО? Соответствует МАЖОРНОЙ версии в SemVer",
                 "name": "is_breaking_change",
                 "default": False,
             },
             {
                 "type": "input",
                 "name": "footer",
-                "message": (
-                    "Footer. Information about Breaking Changes and "
-                    "reference issues that this commit closes: (press [enter] to skip)\n"
-                ),
+                "message": "Примечания. Информация об обратно несовместимых изменениях, а также задачах, которые этот коммит закрывает: (нажмите [enter], чтобы пропустить)\n",
             },
         ]
         return questions
@@ -174,11 +150,11 @@ class CzRu(BaseCommitizen):
 
     def example(self) -> str:
         return (
-            "fix: correct minor typos in code\n"
+            "fix: исправлены незначительны опечатки в коде\n"
             "\n"
-            "see the issue for details on the typos fixed\n"
+            "подробности об исправленных опечатках в описании задачи\n"
             "\n"
-            "closes issue #12"
+            "закрывает задачу #12"
         )
 
     def schema(self) -> str:
@@ -214,5 +190,5 @@ class CzRu(BaseCommitizen):
             return ""
         return m.group(3).strip()
 
-class InvalidAnswerError(CzException):
-    ...
+
+class InvalidAnswerError(CzException): ...

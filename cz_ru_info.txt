@@ -1,31 +1,40 @@
-The commit contains the following structural elements, to communicate
-intent to the consumers of your library:
+Conventional Commits - это простое соглашение о том, как нужно писать сообщения коммитов.
+Оно описывает простой набор правил для создания понятной истории коммитов,
+а также позволяет проще разрабатывать инструменты автоматизации, основанные на
+истории коммитов. Данное соглашение совместимо с SemVer (http://semver.org),
+описывая новые функции (features), исправления (fixes) и изменения, нарушающие
+обратную совместимость (breaking changes) в сообщениях коммитов.
 
-fix: a commit of the type fix patches a bug in your codebase
-(this correlates with PATCH in semantic versioning).
+Сообщения коммитов должны быть следующей структуры:
 
-feat: a commit of the type feat introduces a new feature to the codebase
-(this correlates with MINOR in semantic versioning).
+<тип>[опциональная область]: <краткое описание>
 
-BREAKING CHANGE: a commit that has the text BREAKING CHANGE: at the beginning of
-its optional body or footer section introduces a breaking API change
-(correlating with MAJOR in semantic versioning).
-A BREAKING CHANGE can be part of commits of any type.
+[опциональное подробное описание]
 
-Others: commit types other than fix: and feat: are allowed,
-like chore:, docs:, style:, refactor:, perf:, test:, and others.
+[опциональные примечания]
 
-We also recommend improvement for commits that improve a current
-implementation without adding a new feature or fixing a bug.
+Коммиты могут содержать следующие структурные элементы для сообщений пользователям
+вашей библиотеки:
 
-Notice these types are not mandated by the conventional commits specification,
-and have no implicit effect in semantic versioning (unless they include a BREAKING CHANGE).
+1. fix: коммит типа fix исправляет ошибку в вашем коде
+(он соответствует ПАТЧ-версии в SemVer)
+2. feat: коммит типа feat добавляет новую функцию в ваш код
+(он соответствует МИНОРНОЙ версии в SemVer).
+3. BREAKING CHANGE: коммит, который содержит текст BREAKING CHANGE:
+в начале своего не обязательного подробного описания или в примечаниях,
+добавляет изменения, нарушающие обратную совместимость вашего API
+(он соответствует МАЖОРНОЙ версии в SemVer).
+Обратно несовместимые изменения могут быть частью коммита любого типа.
+4. Другое: коммиты с типами, которые отличаются от fix: и feat:,
+также разрешены. Например, @commitlint/config-conventional
+(основанный на The Angular Convention)
+рекомендует: chore:, docs:, style:, refactor:, perf:, test:, и другие.
 
-A scope may be provided to a commit’s type, to provide additional contextual
-information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays.
+Мы также рекомендуем improvement для коммитов, которые вносят улучшения в текущую
+реализацию без добавления новых функций и исправления ошибок. Обратите внимание, что
+данный тип не описывается данной спецификацией и не имеет эффекта в SemVer
+(за исключением, когда он включает обратно несовместимые изменения).
 
-<type>[optional scope]: <description>
-
-[optional body]
-
-[optional footer]
+Область изменений может быть объявлена рядом с типом коммита для добавления дополнительной
+информации о контексте. Она должна содержаться в круглых скобках, например,
+feat(парсер): добавлена возможность парсить массивы.

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "cz-ru"
 version = "0.1.2"
-description = "Конфиг для Commitizen на русском языке, основанный на Conventional Commits"
+description = "Russian config for Commitizen based on Conventional Commits"
 authors = ["teatov <teatov@proton.me>"]
 license = "MIT"
 readme = "README.md"

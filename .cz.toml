@@ -1,8 +1,0 @@
-[tool.commitizen]
-name = "cz_ru"
-tag_format = "$version"
-version_scheme = "semver"
-version = "0.1.2"
-update_changelog_on_bump = true
-major_version_zero = true
-bump_message = "bump: версия $current_version → $new_version"

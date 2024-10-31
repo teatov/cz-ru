@@ -3,7 +3,7 @@ from setuptools import setup
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 filepath = os.path.join(dir_path, "README.md")
-with open(filepath) as f:
+with open(filepath, encoding="utf-8") as f:
     readme = f.read()
 
 setup(

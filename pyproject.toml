@@ -11,6 +11,10 @@ repository = "https://github.com/teatov/cz-ru"
 python = "^3.11"
 commitizen = "^3.30.0"
 
+[tool.poetry.plugins]
+[tool.poetry.plugins."commitizen.plugin"]
+"cz_ru" = "cz_ru:CzRu"
+
 
 [tool.commitizen]
 name = "cz_ru"
